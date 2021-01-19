@@ -15,6 +15,7 @@
 		50ADFFA42020D75100D50D53 /* Capacitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50ADFFA52020D75100D50D53 /* Capacitor.framework */; };
 		50ADFFA82020EE4F00D50D53 /* Plugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 50ADFFA72020EE4F00D50D53 /* Plugin.m */; };
 		50E1A94820377CB70090CE1A /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E1A94720377CB70090CE1A /* Plugin.swift */; };
+		5E0E3CB625B75BB300FFD1F5 /* AppleWebProviderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0E3CB525B75BB300FFD1F5 /* AppleWebProviderHandler.swift */; };
 		DA34D39B22328D9400326C50 /* ProviderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34D39A22328D9400326C50 /* ProviderHandler.swift */; };
 		DA34D39D22328E4900326C50 /* GoogleProviderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA34D39C22328E4900326C50 /* GoogleProviderHandler.swift */; };
 		DA8E24E4223977D60030886C /* TwitterProviderHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8E24E3223977D60030886C /* TwitterProviderHandler.swift */; };
@@ -43,6 +44,7 @@
 		50ADFFA52020D75100D50D53 /* Capacitor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Capacitor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50ADFFA72020EE4F00D50D53 /* Plugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Plugin.m; sourceTree = "<group>"; };
 		50E1A94720377CB70090CE1A /* Plugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
+		5E0E3CB525B75BB300FFD1F5 /* AppleWebProviderHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleWebProviderHandler.swift; sourceTree = "<group>"; };
 		5E23F77F099397094342571A /* Pods-Plugin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Plugin/Pods-Plugin.debug.xcconfig"; sourceTree = "<group>"; };
 		91781294A431A2A7CC6EB714 /* Pods-Plugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Plugin/Pods-Plugin.release.xcconfig"; sourceTree = "<group>"; };
 		96ED1B6440D6672E406C8D19 /* Pods-PluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				DA34D39C22328E4900326C50 /* GoogleProviderHandler.swift */,
 				DA8E24E3223977D60030886C /* TwitterProviderHandler.swift */,
 				DAF56118224A506B00751B26 /* PhoneNumberProvider.swift */,
+				5E0E3CB525B75BB300FFD1F5 /* AppleWebProviderHandler.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA8E24E4223977D60030886C /* TwitterProviderHandler.swift in Sources */,
+				5E0E3CB625B75BB300FFD1F5 /* AppleWebProviderHandler.swift in Sources */,
 				DA34D39D22328E4900326C50 /* GoogleProviderHandler.swift in Sources */,
 				DAF56119224A506B00751B26 /* PhoneNumberProvider.swift in Sources */,
 				DA34D39B22328D9400326C50 /* ProviderHandler.swift in Sources */,
