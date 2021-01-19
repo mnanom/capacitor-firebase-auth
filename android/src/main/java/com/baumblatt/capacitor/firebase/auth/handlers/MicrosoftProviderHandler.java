@@ -19,9 +19,9 @@ import com.google.firebase.auth.OAuthProvider;
 
 import java.lang.reflect.Method;
 
-public class AppleProviderHandler implements ProviderHandler, OnSuccessListener<AuthResult>, OnFailureListener {
-    private static final String APPLE_TAG = "AppleProviderHandler";
-    public static final int RC_APPLE_SIGN_IN = 8001;
+public class MicrosoftProviderHandler implements ProviderHandler, OnSuccessListener<AuthResult>, OnFailureListener {
+    private static final String MICROSOFT_TAG = "MicrosfProviderHandler";
+    public static final int RC_TWITTER_SIGN_IN = 9001;
 
     private CapacitorFirebaseAuth plugin;
     private FirebaseAuth firebaseAuth;
@@ -33,14 +33,14 @@ public class AppleProviderHandler implements ProviderHandler, OnSuccessListener<
 
         String languageCode = this.plugin.getConfig().getString(CapacitorFirebaseAuth.CONFIG_KEY_PREFIX +"languageCode", "en");
 
-        this.provider = OAuthProvider.newBuilder("apple.com");
-        this.provider.addCustomParameter("lang", languageCode);
+        this.provider = OAuthProvider.newBuilder("microsoft.com");
+        provider.addCustomParameter("tenant", this.plugin.getContext().getString("tenantName") + ".onmicrosoft.com");
         this.firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @Override
     public void signIn(PluginCall call) {
-        Log.d(APPLE_TAG, "Apple SignIn starts..");
+        Log.d(MICROSOFT_TAG, "Microsoft SignIn starts..");
         Task<AuthResult> pendingResultTask = firebaseAuth.getPendingAuthResult();
 
         if (pendingResultTask != null) {
@@ -60,44 +60,40 @@ public class AppleProviderHandler implements ProviderHandler, OnSuccessListener<
 
     @Override
     public void onFailure(@NonNull Exception exception) {
-        Log.w(APPLE_TAG, "appleLogin:failure", exception);
-        plugin.handleFailure("Apple Sign In failure.", exception);
+        Log.w(MICROSOFT_TAG, "MicrosoftLogin:failure", exception);
+        plugin.handleFailure("Microsoft Sign In failure.", exception);
     }
 
     @Override
     public void signOut() {
         // there is nothing to do here
-        Log.d(APPLE_TAG, "AppleProviderHandler.signOut called.");
+        Log.d(MICROSOFT_TAG, "MicrosoftProviderHandler.signOut called.");
     }
 
     @Override
     public int getRequestCode() {
         // there is nothing to do here
-        Log.d(APPLE_TAG, "AppleProviderHandler.getRequestCode called.");
-        return RC_APPLE_SIGN_IN;
+        Log.d(MICROSOFT_TAG, "MicrosoftProviderHandler.getRequestCode called.");
+        return RC_TWITTER_SIGN_IN;
     }
 
     @Override
     public void handleOnActivityResult(int requestCode, int resultCode, Intent data) {
         // there is nothing to do here
-        Log.d(APPLE_TAG, "AppleProviderHandler.signOut called.");
+        Log.d(MICROSOFT_TAG, "handleOnActivityResult.signOut called.");
     }
 
     @Override
     public boolean isAuthenticated() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
-        return user != null &&  "apple.com".equals(user.getProviderId());
+        return user != null &&  "microsoft.com".equals(user.getProviderId());
     }
 
     @Override
     public void fillResult(AuthCredential credential, JSObject jsResult) {
         if (credential != null) {
             jsResult.put("idToken", this.getCredentialParts(credential, "getAccessToken"));
-            jsResult.put("accessToken", this.getCredentialParts(credential, "getIdToken"));
-            jsResult.put("getWebSignInCredential", this.getCredentialParts(credential, "getWebSignInCredential"));
-            jsResult.put("getPendingToken", this.getCredentialParts(credential, "getPendingToken"));
-            jsResult.put("getSecret", this.getCredentialParts(credential, "getSecret"));
-            jsResult.put("rawNonce", this.getCredentialParts(credential, "getRawNonce"));
+            jsResult.put("secret", this.getCredentialParts(credential, "getSecret"));
         }
     }
 
@@ -106,9 +102,8 @@ public class AppleProviderHandler implements ProviderHandler, OnSuccessListener<
             Method method = credential.getClass().getMethod(methodName);
             return (String) method.invoke(credential);
         } catch (Exception e) {
-            Log.d(APPLE_TAG, String.format("Fail to get %s from credentials.", methodName));
+            Log.d(MICROSOFT_TAG, String.format("Fail to get %s from credentials.", methodName));
             return "";
         }
     }
-
 }
