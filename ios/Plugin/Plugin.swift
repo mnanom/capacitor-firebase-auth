@@ -48,9 +48,6 @@ public class CapacitorFirebaseAuth: CAPPlugin {
             } else if ("phone" == provider) {
                 self.providers["phone"] = PhoneNumberProviderHandler()
                 self.providers["phone"]?.initialize(plugin: self)
-            } else if ("appleweb.com" == provider) {
-                self.providers["apple.com"] = AppleWebProviderHandler()
-                self.providers["apple.com"]?.initialize(plugin: self)
             }
         }
     }
