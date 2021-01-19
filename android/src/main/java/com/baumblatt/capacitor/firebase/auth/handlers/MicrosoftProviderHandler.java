@@ -34,7 +34,7 @@ public class MicrosoftProviderHandler implements ProviderHandler, OnSuccessListe
         String languageCode = this.plugin.getConfig().getString(CapacitorFirebaseAuth.CONFIG_KEY_PREFIX +"languageCode", "en");
 
         this.provider = OAuthProvider.newBuilder("microsoft.com");
-        provider.addCustomParameter("tenant", this.plugin.getContext().getString("tenantName") + ".onmicrosoft.com");
+        provider.addCustomParameter("tenant", this.plugin.getConfig().getString(CapacitorFirebaseAuth.CONFIG_KEY_PREFIX + "tenantName", "live") + ".onmicrosoft.com");
         this.firebaseAuth = FirebaseAuth.getInstance();
     }
 
