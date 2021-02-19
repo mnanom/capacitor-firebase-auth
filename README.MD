@@ -200,7 +200,7 @@ Since that Apple using Push Notification service (APNs). You need to have `.p8` 
 
 1. Add the dependency for **Facebook SDK** to your app-level build.gradle file:
     ```
-    implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
+    implementation 'com.facebook.android:facebook-android-sdk:8.1.0'
     ```
 2. In file `android/app/src/main/AndroidManifest.xml`, add the following XML elements under `<manifest><application>` :
    
